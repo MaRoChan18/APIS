@@ -1,0 +1,78 @@
+//Código usado
+import requests
+
+def get_fake_users():
+    url = "https://fakerapi.it/api/v1/users?_quantity=5"
+    response = requests.get(url)
+    if response.status_code == 200:
+        data = response.json()
+        return data['data']
+    else:
+        print("Error al obtener usuarios falsos:", response.status_code)
+        return []
+
+def get_fake_products():
+    url = "https://fakerapi.it/api/v1/products?_quantity=5"
+    response = requests.get(url)
+    if response.status_code == 200:
+        data = response.json()
+        return data['data']
+    else:
+        print("Error al obtener productos falsos:", response.status_code)
+        return []
+
+def get_fake_text():
+    url = "https://fakerapi.it/api/v1/texts?_quantity=1"
+    response = requests.get(url)
+    if response.status_code == 200:
+        data = response.json()
+        if 'data' in data and len(data['data']) > 0 and 'text' in data['data'][0]:
+            return data['data'][0]['text']
+        else:
+            print("No se encontró 'text' en la respuesta de la API.")
+            return ""
+    else:
+        print("Error al obtener texto falso:", response.status_code)
+        return ""
+
+if __name__ == "__main__":
+    fake_users = get_fake_users()
+    print("Usuarios falsos:")
+    for user in fake_users:
+        print(user)
+
+    fake_products = get_fake_products()
+    print("\nProductos falsos:")
+    for product in fake_products:
+        print(product)
+
+    fake_text = get_fake_text()
+    print("\nTexto falso:")
+    print(fake_text)
+
+//Resultado arrojado
+
+Usuarios falsos:
+{'id': 1, 'uuid': '5889362b-ebbe-3f0d-802e-47f1f8de43f6', 'firstname': 'Ofelia', 'lastname': 'Marvin', 'username': 'agraham', 'password': '}\\Gfk*Y@#PTqID2Uu', 'email': 'schultz.raquel@hotmail.com', 'ip': '226.178.92.168', 'macAddress': 'B0:9B:5B:94:03:ED', 'website': 'http://schneider.com', 'image': 'http://placeimg.com/640/480/people'}
+{'id': 2, 'uuid': '1edcaf08-07ca-3ce1-ae4e-5c06a77ea51e', 'firstname': 'Elias', 'lastname': 'Kovacek', 'username': 'bmayert', 'password': '0#IAG%4egVGz', 'email': 'albin66@stokes.com', 'ip': '167.233.91.217', 'macAddress': '82:ED:70:44:37:B9', 'website': 'http://white.biz', 'image': 'http://placeimg.com/640/480/people'}
+{'id': 3, 'uuid': 'a8c46af7-4a61-3064-a6a1-de3d999a7210', 'firstname': 'Amely', 'lastname': 'McLaughlin', 'username': 'iprice', 'password': '-5m&/@b}y=', 'email': 'adan72@murphy.com', 'ip': '187.192.11.223', 'macAddress': '89:4E:DD:8F:9E:95', 'website': 'http://fritsch.com', 'image': 'http://placeimg.com/640/480/people'}
+{'id': 4, 'uuid': 'de1880fd-28b7-3f03-8032-f04e24fe3c18', 'firstname': 'Leonora', 'lastname': 'Lind', 'username': 'meagan.olson', 'password': ';PTMXPS]{', 'email': 'justen05@ledner.org', 'ip': '52.20.142.222', 'macAddress': 'B2:2A:FE:02:28:8E', 'website': 'http://mcglynn.net', 'image': 'http://placeimg.com/640/480/people'}
+{'id': 5, 'uuid': '89b3962a-584e-3734-bfc5-2087fc6df75f', 'firstname': 'Seamus', 'lastname': 'Zboncak', 'username': 'ebony00', 'password': '8zoiyH', 'email': 'bartell.emily@beatty.org', 'ip': '167.246.73.163', 'macAddress': '3D:CF:A9:AC:E8:6F', 'website': 'http://reilly.com', 'image': 'http://placeimg.com/640/480/people'}
+
+Productos falsos:
+{'id': 1, 'name': 'Et nesciunt rem totam saepe.', 'description': 'Beatae repellat in sed aut est. Modi blanditiis et placeat qui voluptates. Esse quis omnis non enim. Animi dolore quam nobis sequi est consequatur.', 'ean': '5597894403376', 'upc': '670862961882', 'image': 'http://placeimg.com/640/480/tech', 'images': [{'title': 'Atque itaque non voluptatum.', 'description': 'Vitae dicta voluptatem ducimus qui nihil a. Impedit nostrum fugiat aut officiis.', 'url': 'http://placeimg.com/640/480/any'}, {'title': 'Animi non suscipit enim.', 'description': 'Placeat veritatis ea facilis adipisci praesentium odit. Molestiae aliquam ipsam eius cupiditate reprehenderit velit. Placeat veniam nesciunt illo.', 'url': 'http://placeimg.com/640/480/any'}, {'title': 'Nisi vel quos aut est dolore.', 'description': 'Totam alias id delectus repudiandae. Quo minus debitis a et similique odio quas. Repudiandae est fuga ad nulla doloribus qui aperiam.', 'url': 'http://placeimg.com/640/480/any'}], 'net_price': 1574.7, 'taxes': 22, 'price': '1921.13', 'categories': [8, 4, 1], 'tags': ['labore', 'sunt', 'enim', 'sed']}
+{'id': 2, 'name': 'Sint eos incidunt illo totam.', 'description': 'Maiores similique vero in et doloremque. Facere magni esse non voluptatem fugit aliquam est rerum. Itaque magnam similique qui harum dolorum. Et vel possimus voluptatem excepturi.', 'ean': '3759673239015', 'upc': '373578515461', 'image': 'http://placeimg.com/640/480/tech', 'images': [{'title': 'Omnis et ex neque id.', 'description': 'Consequuntur repudiandae omnis eius et. Reprehenderit ipsum odit pariatur itaque ex asperiores. Officia et natus quibusdam velit omnis similique.', 'url': 'http://placeimg.com/640/480/any'}, {'title': 'Ut dignissimos earum harum.', 'description': 'Nemo placeat sit reiciendis qui quia eius. Magni mollitia reprehenderit et esse assumenda. Quam veritatis nostrum sit ut non blanditiis.', 'url': 'http://placeimg.com/640/480/any'}, {'title': 'Impedit consequatur enim et.', 'description': 'Iusto ipsum sit dolor eius explicabo. Sequi amet placeat autem corporis corporis ipsa. Tempore iste eos placeat libero et. Magnam non et ipsum iste consectetur delectus.', 'url': 'http://placeimg.com/640/480/any'}], 'net_price': 1.42, 'taxes': 22, 'price': '1.73', 'categories': [8], 'tags': ['consequatur', 'ullam', 'repudiandae', 'quas', 'et']}
+{'id': 3, 'name': 'Et sit tempora amet et qui.', 'description': 'Eum a dolor illo magni. Non harum dolores dolores voluptatibus sequi. Repellendus aut maxime et nesciunt odio quisquam. Voluptatem error sed id id ea fuga.', 'ean': '2291098368082', 'upc': '893515604458', 'image': 'http://placeimg.com/640/480/tech', 'images': [{'title': 'Quae ea laudantium officiis.', 'description': 'Commodi nobis esse praesentium. Nihil consectetur aut maxime et omnis. Quia vel natus dolores optio qui ex ut.', 'url': 'http://placeimg.com/640/480/any'}, {'title': 'Enim et et ipsum animi.', 'description': 'Assumenda nulla ex numquam rerum aut deserunt reprehenderit. Sit doloremque nostrum fugit aut. Nobis rem eum commodi laborum. Mollitia nemo vitae id.', 'url': 'http://placeimg.com/640/480/any'}, {'title': 'Voluptatem nihil quo tenetur.', 'description': 'Voluptate autem eaque minima suscipit. Illum architecto est impedit culpa veritatis. Quae autem suscipit quia perspiciatis dolor.', 'url': 'http://placeimg.com/640/480/any'}], 'net_price': 10403.32, 'taxes': 22, 'price': '12692.05', 'categories': [5, 4, 1], 'tags': ['est', 'occaecati', 'blanditiis']}
+{'id': 4, 'name': 'Soluta qui quidem aliquid.', 'description': 'Sunt mollitia aut aliquid culpa dolor. Asperiores deleniti neque deleniti voluptatibus ratione sint possimus. Vel expedita odit quia quia et consectetur magnam hic. Eos non incidunt officia in.', 'ean': '2050125726109', 'upc': '798612955512', 'image': 'http://placeimg.com/640/480/tech', 'images': [{'title': 'Deleniti odio occaecati quae.', 'description': 'Ab totam esse sunt doloremque est sed. Velit doloremque dicta nihil voluptas. Tenetur quas error expedita. Recusandae inventore ipsam eius vero.', 'url': 'http://placeimg.com/640/480/any'}, {'title': 'Quasi illum eum voluptatum.', 'description': 'Beatae voluptas quidem maiores odio cum. Consequatur hic velit sed. Autem ut impedit explicabo. Doloremque fugiat optio velit. Eius ex nulla quis laboriosam. Sed perspiciatis dicta incidunt.', 'url': 'http://placeimg.com/640/480/any'}, {'title': 'In sed odio est omnis et.', 'description': 'Autem velit in mollitia et odio voluptatem modi. Quasi odio cupiditate voluptates facilis. Quo quo et natus sed aliquid nostrum. Iure alias voluptas dolor occaecati et aliquam.', 'url': 'http://placeimg.com/640/480/any'}], 'net_price': 56.06, 'taxes': 22, 'price': '68.39', 'categories': [3], 'tags': ['et', 'occaecati', 'impedit', 'debitis', 'eligendi', 'qui']}
+{'id': 5, 'name': 'Mollitia quia sit nihil.', 'description': 'Ab est soluta et ratione iste sint. Molestiae rerum reprehenderit et. Quia esse odit facere est. Inventore vel qui quibusdam accusantium impedit doloremque consequatur.', 'ean': '1814908389551', 'upc': '295804575615', 'image': 'http://placeimg.com/640/480/tech', 'images': [{'title': 'Laborum et in vero quos nemo.', 'description': 'Corrupti voluptate temporibus vel dolor veritatis dolorem. Consequatur asperiores temporibus est aliquid iure. Reiciendis quos harum aut illo. Ut aut ex eum enim non nihil.', 'url': 'http://placeimg.com/640/480/any'}, {'title': 'Ut unde est soluta maxime.', 'description': 'Vitae aut sint labore non. Tempora ut ex qui sint vel. Reiciendis earum ipsam corrupti eligendi quo impedit molestiae.', 'url': 'http://placeimg.com/640/480/any'}, {'title': 'Commodi et ex repellat.', 'description': 'Hic quam repellendus eveniet est porro. Non quam rerum soluta consectetur necessitatibus. Et minus alias ut sequi et atque. Suscipit enim et perspiciatis consequatur labore ducimus quam magni.', 'url': 'http://placeimg.com/640/480/any'}], 'net_price': 38772936.82, 'taxes': 22, 'price': '47302982.92', 'categories': [9, 1], 'tags': ['voluptatem', 'culpa', 'voluptates', 'qui', 'modi']}
+
+No se encontró 'text' en la respuesta de la API.
+
+Texto falso:
+
+Error al obtener colores falsos: 404
+
+Colores falsos:
+
+Chiste de Chuck Norris:
+Chuck Norris counted to infinity , twice.
